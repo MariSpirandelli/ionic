@@ -1,7 +1,7 @@
 # Description
 
-This is a simple Ionic project which make Rest requests to a SpringBoot project server. 
-The project is basically a CRUD of people and theirs applications, adding a role to each person (which does nothing untill the moment).
+This is a simple Ionic project which uses RestAPI to make http requests to a SpringBoot project server. 
+The project is basically a CRUD of people and theirs applications, adding a role to each person (which does nothing at the moment).
 
 ## Requirements:
 
@@ -23,6 +23,14 @@ The project is basically a CRUD of people and theirs applications, adding a role
 
 First of all, create your database from the file schema.sql located on db folder and run mysql server.
 
+*Backend:*
+
+After cheking all database configurations on application.properties file, open a command line and run:
+```bash 
+mvn spring-boot:run
+```
+ on the root folder (mba-service).
+
 *Frontend:*
 
 On a command line, open the project on root folder (ionic/marionic) and run:
@@ -34,11 +42,3 @@ npm install
 ionic server --lab 
 ```
 to check it on desktop simulating both IoS and Android (noticing that the layout was focused on the Android platform).
-
-*Backend:*
-
-After cheking all database configurations on application.properties file, open a command line and run:
-```bash 
-mvn spring-boot:run
-```
- on the root folder (mba-service).
