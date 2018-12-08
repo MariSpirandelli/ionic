@@ -33,7 +33,7 @@ npm install
 ```bash 
 ionic server --lab 
 ```
-to check it on desktop simulating both IoS and Android.
+to check it on desktop simulating both IoS and Android (noticing that the layout was focused on the Android platform).
 
 *Backend:*
 
