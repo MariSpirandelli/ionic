@@ -1,0 +1,57 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{person?.name}}</ion-title>
+    <ion-buttons end *ngIf="person && person.id">
+      <button ion-button icon-only (click)="deletePerson()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="person"> 
+    <ion-item>
+      <ion-label stacked>Name: </ion-label>
+      <ion-input type="text" placeholder="Name" [(ngModel)]="person.name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>CPF: </ion-label>
+      <ion-input type="text" placeholder="CPF" [(ngModel)]="person.cpf" (ionBlur)="cpfFormat()" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>RG: </ion-label>
+      <ion-input type="text" placeholder="RG" [(ngModel)]="person.rg" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Birthday</ion-label>
+        <ion-datetime pickerFormat="DD/MM/YYYY" [(ngModel)]="birthday"></ion-datetime>
+      </ion-item>
+
+    <ion-list *ngIf="person.profile && profiles">
+        <ion-item>
+          <ion-label>Profiles</ion-label>
+          <ion-select [(ngModel)]="person.profile" cancelText="Cancel" okText="Confirm">
+            <ion-option *ngFor="let profile of profiles" selected="profile === person.profile" [value]="profile">{{profile.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+    <ion-list *ngIf="person.applications && applications">
+      <ion-item>
+        <ion-label>Applications</ion-label>
+        <ion-select [(ngModel)]="person.applications" multiple="true" cancelText="Cancel" okText="Confirm">
+          <ion-option *ngFor="let application of applications" [selected]="isSelected(application, 'applications')" [value]="application">{{application.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <button ion-button full (click)="saveOrUpdate()">Save</button>
+  </div>
+</ion-content>

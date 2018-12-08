@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title padding>People</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="newPerson()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item-group *ngFor="let group of groups">
+    <ion-item-divider color="light">{{group}}</ion-item-divider>
+      <ion-list>
+        <div *ngFor="let person of people">
+          <ion-item *ngIf="person?.name[0] === group" (click)="itemSelected(person)">
+            <div class="cursor-click">
+              <ion-avatar item-start>
+                <img src="/assets/imgs/user-avatar.png">
+              </ion-avatar>
+              <h2>{{person?.name}}</h2>
+              <p>{{person?.profile?.name}}<small end>Applications: {{person.applications.length}}</small></p>
+            </div>
+          </ion-item>
+        </div>
+      </ion-list>
+  </ion-item-group>
+</ion-content>
